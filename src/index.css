@@ -1,0 +1,182 @@
+:root {
+  --app-height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #f8fafc;
+  font-family: "Space Mono", monospace;
+}
+
+Canvas {
+  height: 100%;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: var(--app-height);
+  width: 100vw;
+}
+
+a {
+  text-decoration: none;
+  color: #060ef4;
+}
+
+#arm {
+  position: absolute;
+  bottom: 0px;
+  height: 550px;
+  width: 100vw;
+  /* border: 5px solid #000000; */
+}
+
+.name {
+  position: absolute;
+  font-family: "Space Mono", monospace;
+  left: 50%;
+  transform: translate(-50%);
+  top: 30px;
+}
+
+.name .title {
+  font-size: 25px;
+  text-align: center;
+  font-weight: 500;
+  color: #000000;
+}
+
+.name .subTitle {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 100;
+  color: #545454;
+}
+
+.at::before {
+  content: "@";
+  animation: at infinite 3s;
+}
+
+.exclamation::before {
+  content: "!";
+  animation: exclamation infinite 3s;
+}
+
+.dollar::before {
+  content: "$";
+  animation: dollar infinite 3s;
+}
+
+.hash::before {
+  content: "#";
+  animation: hash infinite 3s;
+}
+
+/* Animations */
+@keyframes at {
+  0% {
+    content: "@";
+  }
+
+  33% {
+    content: "A";
+  }
+
+  66% {
+    content: "a";
+  }
+}
+
+@keyframes exclamation {
+  0% {
+    content: "!";
+  }
+
+  33% {
+    content: "I";
+  }
+
+  66% {
+    content: "i";
+  }
+}
+
+@keyframes dollar {
+  0% {
+    content: "$";
+  }
+
+  33% {
+    content: "S";
+  }
+
+  66% {
+    content: "s";
+  }
+}
+
+@keyframes hash {
+  0% {
+    content: "#";
+  }
+
+  33% {
+    content: "H";
+  }
+
+  66% {
+    content: "h";
+  }
+}
+
+.i {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  right: 30px;
+  top: 100px;
+  border: 2px solid #00000064;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: #00000094;
+}
+
+.buttonThree {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.three {
+  color: #f8fafc;
+  position: absolute;
+  right: 30px;
+  top: 100px;
+  background-color: #ff0000;
+  z-index: 1;
+  padding: 30px 30px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.info-text {
+  padding-top: 10px;
+}
