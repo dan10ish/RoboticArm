@@ -4,6 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import Arm from "./Arm.jsx";
 import { motion } from "framer-motion-3d";
+import { Info } from "lucide-react";
 
 export default function App() {
   // Fix Height Bug in IOS
@@ -14,13 +15,13 @@ export default function App() {
   window.addEventListener("resize", appHeight);
   appHeight();
 
-  const [visible, setVisible] = React.useState(false);
+  const [showInfo, setShowInfo] = React.useState(false);
 
   const CustomCamera = () => {
     const { camera } = useThree();
-    camera.position.set(0, 3, 7); // Set camera position
-    camera.rotation.set(0, 0, 0); // Set camera rotation
-    camera.fov = 75; // Set camera field of view
+    camera.position.set(0, 3, 7);
+    camera.rotation.set(0, 0, 0);
+    camera.fov = 75;
   };
 
   return (
@@ -45,24 +46,60 @@ export default function App() {
             <div className="subTitle">3-DOF Robotic Arm</div>
           </div>
 
-          <div className="i">
-            <div className="i-icon" onClick={() => setVisible(true)}>
-              i
+          {/* Info Button */}
+          <button className="info-button" onClick={() => setShowInfo(true)}>
+            <Info className="info-icon" />
+          </button>
+
+          {/* Info Dialog */}
+          {showInfo && (
+            <div className="dialog-overlay">
+              <div className="dialog-content">
+                <h2>About This Project</h2>
+                <div className="dialog-body">
+                  <p>
+                    <strong>Click on the cubes!</strong>
+                  </p>
+                  <p>
+                    Visit my{" "}
+                    <a
+                      href="https://dan10ish.github.io"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      personal website
+                    </a>{" "}
+                    to see more of my work.
+                  </p>
+                  <p>
+                    Check out the{" "}
+                    <a
+                      href="https://github.com/dan10ish/RoboticArm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      source code
+                    </a>{" "}
+                    on GitHub.
+                  </p>
+                </div>
+                <button
+                  className="dialog-close"
+                  onClick={() => setShowInfo(false)}
+                >
+                  Close
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </motion.group>
+
         <div id="arm">
           <Canvas>
             <CustomCamera />
             <Arm scale={0.1} position={[0, -2.5, 0]} rotation={[0, 0, 0]} />
             <Environment preset="city" />
-            <OrbitControls
-              // minAzimuthAngle={-Math.PI / 4}
-              // maxAzimuthAngle={Math.PI / 4}
-              // minPolarAngle={Math.PI / 6}
-              maxPolarAngle={Math.PI / 2}
-              enablePan={true}
-            />
+            <OrbitControls maxPolarAngle={Math.PI / 2} enablePan={true} />
             <gridHelper
               args={[50, 50, 0xff0000, 0x999999]}
               position={[0, -2.5, 0]}
@@ -71,34 +108,6 @@ export default function App() {
           </Canvas>
         </div>
       </main>
-      {visible && (
-        <div className="three">
-          <div className="buttonThree" onClick={() => setVisible(false)}>
-            X
-          </div>
-          <div className="info-text">
-            <b>Click on the cubes!</b> <br /> <br />
-            Click{" "}
-            <a
-              href="https://github.com/dan10ish/RoboticArm"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              here
-            </a>{" "}
-            to visit this project's github repo. <br />
-            Click{" "}
-            <a
-              href="https://danishansari.in"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              here
-            </a>{" "}
-            to visit my website.
-          </div>
-        </div>
-      )}
     </>
   );
 }

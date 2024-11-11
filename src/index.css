@@ -38,7 +38,6 @@ a {
   bottom: 0px;
   height: 550px;
   width: 100vw;
-  /* border: 5px solid #000000; */
 }
 
 .name {
@@ -63,6 +62,100 @@ a {
   color: #545454;
 }
 
+/* Info Button Styles */
+.info-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.info-button:hover {
+  background-color: #f3f4f6;
+}
+
+.info-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #374151;
+}
+
+/* Dialog Styles */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  max-width: 90%;
+  width: 28rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dialog-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.dialog-body {
+  margin-bottom: 1.5rem;
+}
+
+.dialog-body p {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.dialog-body a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.dialog-body a:hover {
+  color: #1d4ed8;
+}
+
+.dialog-close {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dialog-close:hover {
+  background-color: #1d4ed8;
+}
+
+/* Existing animations */
 .at::before {
   content: "@";
   animation: at infinite 3s;
@@ -83,16 +176,14 @@ a {
   animation: hash infinite 3s;
 }
 
-/* Animations */
+/* Animation keyframes */
 @keyframes at {
   0% {
     content: "@";
   }
-
   33% {
     content: "A";
   }
-
   66% {
     content: "a";
   }
@@ -102,11 +193,9 @@ a {
   0% {
     content: "!";
   }
-
   33% {
     content: "I";
   }
-
   66% {
     content: "i";
   }
@@ -116,11 +205,9 @@ a {
   0% {
     content: "$";
   }
-
   33% {
     content: "S";
   }
-
   66% {
     content: "s";
   }
@@ -130,53 +217,10 @@ a {
   0% {
     content: "#";
   }
-
   33% {
     content: "H";
   }
-
   66% {
     content: "h";
   }
-}
-
-.i {
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  right: 30px;
-  top: 100px;
-  border: 2px solid #00000064;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  color: #00000094;
-}
-
-.buttonThree {
-  position: absolute;
-  top: 2px;
-  right: 0px;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.three {
-  color: #f8fafc;
-  position: absolute;
-  right: 30px;
-  top: 100px;
-  background-color: #ff0000;
-  z-index: 1;
-  padding: 30px 30px;
-  border-radius: 10px;
-  width: 250px;
-}
-
-.info-text {
-  padding-top: 10px;
 }

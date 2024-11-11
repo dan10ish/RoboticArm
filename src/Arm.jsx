@@ -3,7 +3,9 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 export default function Arm(props) {
-  const { nodes, materials } = useGLTF("./assets/Arm.glb");
+  const { nodes, materials } = useGLTF(
+    process.env.PUBLIC_URL + "/assets/Arm.glb"
+  );
 
   const skinnedMeshRef = useRef();
   const [bones, setBones] = useState({});
@@ -28,48 +30,23 @@ export default function Arm(props) {
     }
   }, [animationStarted]);
 
+  // Simplified useFrame since we're using handleCubePress for animations
   useFrame(() => {
     if (animationStarted) {
-      const currentTime = performance.now();
-
-      // Your existing bone animations
-      // animateBone(bones.base, 0, 1000, Math.PI / 1.7, "z");
-      // animateBone(bones.LowerArm, 1000, 1500, -Math.PI / 4, "x");
-      // animateBone(bones.UpperArm, 2500, 2000, Math.PI / 2, "x");
-
-      // if (currentTime - animationStartTime >= 10000) {
-      //   setAnimationStarted(true);
-      // }
+      // Frame updates can be added here if needed
     }
   });
-
-  // Function to animate a bone
-  function animateBone(bone, delay, duration, targetAngle, axis) {
-    if (!bone) return;
-
-    if (performance.now() - animationStartTime >= delay) {
-      const elapsedTime = performance.now() - animationStartTime - delay;
-      if (elapsedTime < duration) {
-        const progress = elapsedTime / duration;
-        const newRotation = targetAngle * progress;
-        bone.rotation[axis] = newRotation;
-      } else {
-        bone.rotation[axis] = targetAngle;
-      }
-    }
-  }
 
   // Function to animate a bone with delay and duration
   function animateBoneWithDelay(bone, delay, duration, targetAngle, axis) {
     setTimeout(() => {
       if (bone) {
-        let startTime = performance.now();
-        let startRotation = bone.rotation[axis];
-        let endTime = startTime + duration;
+        const startTime = performance.now();
+        const startRotation = bone.rotation[axis];
 
         function update() {
-          let currentTime = performance.now();
-          let progress = (currentTime - startTime) / duration;
+          const currentTime = performance.now();
+          const progress = (currentTime - startTime) / duration;
           if (progress < 1) {
             bone.rotation[axis] =
               startRotation + (targetAngle - startRotation) * progress;
@@ -275,4 +252,4 @@ export default function Arm(props) {
   );
 }
 
-useGLTF.preload("./assets/Arm.glb");
+useGLTF.preload("/assets/Arm.glb");
