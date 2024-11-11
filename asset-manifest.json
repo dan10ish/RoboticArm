@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/RoboticArm/static/css/main.bc38c865.css",
-    "main.js": "/RoboticArm/static/js/main.2da6b4c6.js",
+    "main.css": "/RoboticArm/static/css/main.1ac7af98.css",
+    "main.js": "/RoboticArm/static/js/main.e9ae13ba.js",
     "index.html": "/RoboticArm/index.html",
-    "main.bc38c865.css.map": "/RoboticArm/static/css/main.bc38c865.css.map",
-    "main.2da6b4c6.js.map": "/RoboticArm/static/js/main.2da6b4c6.js.map"
+    "main.1ac7af98.css.map": "/RoboticArm/static/css/main.1ac7af98.css.map",
+    "main.e9ae13ba.js.map": "/RoboticArm/static/js/main.e9ae13ba.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc38c865.css",
-    "static/js/main.2da6b4c6.js"
+    "static/css/main.1ac7af98.css",
+    "static/js/main.e9ae13ba.js"
   ]
 }
